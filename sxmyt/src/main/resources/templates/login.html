@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>login</title>
+		<link rel="stylesheet" type="text/css"  th:href="@{/css/normalize.css}" />
+		<link rel="stylesheet" type="text/css"  th:href="@{/css/demo.css}" />
+		<!--必要样式-->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}" />
+		
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+		<div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+					<canvas id="demo-canvas"></canvas>
+					<div class="logo_box">
+						<h3>爱旅行，alvtour</h3>
+						<form action="/yyyy/user/userlogin" name="form" method="POST">
+							<div class="input_outer">
+								<span class="u_user"></span>
+								<input name="loginname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+							</div>
+							<div class="input_outer">
+								<span class="us_uer"></span>
+								<input name="loginpwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请输入密码">
+							</div>
+							<div class="mb2">
+								<!-- <a class="act-but submit" onclick="login()" name="userlogin"  style="color: #FFFFFF ;">登录</a> -->
+								<button type="submit" class="act-but submit"  style="width: 330px; height:54;color:#FFFFFF;border: none" >登录</button>
+							</div>
+						</form>
+						<div>
+							<a href="" style="color:#FFFFFF">忘记密码？</a>
+							<a href="" style="color: #FFFFFF;float: right;">注册帐号</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- /container -->
+		<script type="text/javascript" th:src="@{/js/TweenLite.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/EasePack.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/rAF.js}"></script>
+		<script type="text/javascript" th:src="@{/js/demo-1.js}"></script>
+	</body>
+	
+	<script type="text/javascript">
+	   function login(){
+		   alert("aa");
+		   alert($("[name='form']").html());
+		   
+		   $("form").submit(function(){
+			   alert("submit");
+			   
+		   });
+	   }
+	</script>
+	
+	
+</html>

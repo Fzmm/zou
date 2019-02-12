@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.sxmyt.mapper.AecommendArticleDao" >
+  <resultMap id="BaseResultMap" type="com.yy.sxmyt.model.RecommendedArticleEntity" >
+    <id column="rart_id" property="rart_id" jdbcType="BIGINT" />
+    <result column="art_name" property="art_name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="detail_url" property="detail_url" jdbcType="VARCHAR" />
+    <result column="pic_url" property="pic_url" jdbcType="VARCHAR" />
+    <result column="display_index" property="display_index" jdbcType="INTEGER" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="create_u_id" property="create_u_id" jdbcType="BIGINT" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="update_u_id" property="update_u_id" jdbcType="BIGINT" />
+    <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rart_id, art_name, description, detail_url, pic_url ,display_index, deleted 
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_recommended_article
+    where rart_id = #{rart_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_recommended_article
+    where rart_id = #{rart_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yy.sxmyt.model.RecommendedArticleEntity" >
+    insert into tb_recommended_article (rart_id, art_name, description, 
+      detail_url, display_index, deleted, 
+      create_u_id, create_time, update_u_id, 
+      update_time)
+    values (#{rart_id,jdbcType=BIGINT}, #{art_name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{detail_url,jdbcType=VARCHAR}, #{display_index,jdbcType=INTEGER}, #{deleted,jdbcType=BIT}, 
+      #{create_u_id,jdbcType=BIGINT}, #{create_time,jdbcType=TIMESTAMP}, #{update_u_id,jdbcType=BIGINT}, 
+      #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yy.sxmyt.model.RecommendedArticleEntity" >
+    insert into tb_recommended_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rart_id != null" >
+        rart_id,
+      </if>
+      <if test="art_name != null" >
+        art_name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="detail_url != null" >
+        detail_url,
+      </if>
+      <if test="display_index != null" >
+        display_index,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="create_u_id != null" >
+        create_u_id,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="update_u_id != null" >
+        update_u_id,
+      </if>
+      <if test="update_time != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rart_id != null" >
+        #{rart_id,jdbcType=BIGINT},
+      </if>
+      <if test="art_name != null" >
+        #{art_name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="detail_url != null" >
+        #{detail_url,jdbcType=VARCHAR},
+      </if>
+      <if test="display_index != null" >
+        #{display_index,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="create_u_id != null" >
+        #{create_u_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_u_id != null" >
+        #{update_u_id,jdbcType=BIGINT},
+      </if>
+      <if test="update_time != null" >
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yy.sxmyt.model.RecommendedArticleEntity" >
+    update tb_recommended_article
+    <set >
+      <if test="art_name != null" >
+        art_name = #{art_name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="detail_url != null" >
+        detail_url = #{detail_url,jdbcType=VARCHAR},
+      </if>
+      <if test="display_index != null" >
+        display_index = #{display_index,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="create_u_id != null" >
+        create_u_id = #{create_u_id,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_u_id != null" >
+        update_u_id = #{update_u_id,jdbcType=BIGINT},
+      </if>
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rart_id = #{rart_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yy.sxmyt.model.RecommendedArticleEntity" >
+    update tb_recommended_article
+    set art_name = #{art_name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      detail_url = #{detail_url,jdbcType=VARCHAR},
+      display_index = #{display_index,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=BIT},
+      create_u_id = #{create_u_id,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_u_id = #{update_u_id,jdbcType=BIGINT},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where rart_id = #{rart_id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findinfo" resultType="com.yy.sxmyt.model.RecommendedArticleEntity">
+  	SELECT
+  		<include refid="Base_Column_List"></include>
+  	FROM
+  		tb_recommended_article
+  	WHERE
+  		deleted = 0
+  	ORDER BY display_index DESC
+  	
+  	LIMIT #{pageStar} , #{pageSize}
+  </select>
+</mapper>
